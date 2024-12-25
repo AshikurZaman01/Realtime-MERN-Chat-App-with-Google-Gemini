@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const morgan = require('morgan');
 const connectDB = require('./ConnDB/DB');
+const { notFound, defaultErrorHandler } = require('./MiddleWear/ErrorHandlers');
 
 
 app.use(express.json());
@@ -16,5 +17,10 @@ connectDB();
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+
+
+app.use(notFound);
+app.use(defaultErrorHandler);
+
 
 module.exports = app;
