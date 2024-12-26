@@ -18,6 +18,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+app.use('/api/users', require('./Routes/UserRoutes/userRoute'));
+
 
 app.use(notFound);
 app.use(defaultErrorHandler);
