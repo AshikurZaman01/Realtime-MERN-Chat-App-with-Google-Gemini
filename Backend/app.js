@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const morgan = require('morgan');
 const connectDB = require('./ConnDB/DB');
-const { notFound, defaultErrorHandler } = require('./MiddleWear/ErrorHandlers');
+const { notFound, defaultErrorHandler } = require('./MiddleWare/ErrorHandlers');
 
 
 app.use(express.json());
