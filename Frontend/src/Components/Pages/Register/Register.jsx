@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../../../Config/Axios";
+import { FaSpinner } from "react-icons/fa";
 
 const Register = () => {
 
@@ -8,10 +10,30 @@ const Register = () => {
         email: '',
         password: ''
     })
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user);
+        setErrorMessage("");
+        setLoading(true);
+
+        try {
+            const response = await axiosInstance.post("users/createUsers", user);
+            console.log(response.data);
+            if (response.data.success) {
+                alert(response.data.message);
+                navigate('/')
+            }
+        } catch (error) {
+            console.log("Error : ", error);
+            setErrorMessage(error.response?.data?.message);
+        } finally {
+            setLoading(false);
+        }
+
     }
 
     return (
@@ -71,9 +93,11 @@ const Register = () => {
                         type="submit"
                         className="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-500"
                     >
-                        Register
+                        {loading ? <FaSpinner className="animate-spin mx-auto" /> : "Register"}
                     </button>
                 </form>
+                {errorMessage && <p className="text-center text-red-500 text-sm mt-2">{errorMessage}</p>}
+
                 <p className="mt-4 text-sm text-center text-gray-400">
                     Already have an account? <Link to="/login" className="text-blue-500 hover:underline">Login</Link>
                 </p>
