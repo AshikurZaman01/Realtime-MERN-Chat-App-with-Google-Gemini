@@ -10,8 +10,11 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "frontend": "cd Frontnd && npm run dev",
+   
+    "frontend": "cd Frontend && npm run dev",
+
     "backEnd": "cd Backend && npm start", 
+
     "dev": "concurrently \"npm run frontend\" \"npm run backEnd\""
   },
   "keywords": [],
