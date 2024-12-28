@@ -6,12 +6,14 @@ dotenv.config();
 const morgan = require('morgan');
 const connectDB = require('./ConnDB/DB');
 const { notFound, defaultErrorHandler } = require('./MiddleWare/ErrorHandlers');
-
+const cookieParser = require('cookie-parser');
+connectDB();
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
-connectDB();
+app.use(cookieParser())
 
 
 app.get('/', (req, res) => {

@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Password is required'],
-        select: false, 
+        select: false,
     },
 });
 
@@ -38,7 +38,7 @@ userSchema.statics.hashPassword = async function (password) {
 
 // Instance method to generate JWT
 userSchema.methods.generateJWT = function () {
-    return jwt.sign({ email: this.email }, process.env.JWT_SECRET, { expiresIn: '10d' });
+    return jwt.sign({ userId: this._id, email: this.email }, process.env.JWT_SECRET, { expiresIn: '10d' });
 };
 
 const UserModel = mongoose.model('User', userSchema);
