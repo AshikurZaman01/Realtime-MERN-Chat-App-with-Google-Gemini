@@ -9,6 +9,13 @@ const { notFound, defaultErrorHandler } = require('./MiddleWare/ErrorHandlers');
 const cookieParser = require('cookie-parser');
 connectDB();
 
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "Origin", "Accept"],
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
