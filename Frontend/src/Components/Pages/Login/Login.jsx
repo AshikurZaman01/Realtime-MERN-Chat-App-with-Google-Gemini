@@ -5,7 +5,7 @@ import { FaSpinner } from 'react-icons/fa'
 
 const Login = () => {
 
-    const [user, setUser] = useState({
+    const [userLogin, setUserLogin] = useState({
         email: "",
         password: ""
     })
@@ -20,7 +20,7 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const response = await axiosInstance.post("users/loginUser", user);
+            const response = await axiosInstance.post("users/loginUser", userLogin);
             if (response.data.success) {
                 alert(response.data.message);
                 navigate('/')
@@ -48,8 +48,8 @@ const Login = () => {
                             Email
                         </label>
                         <input
-                            value={user.email}
-                            onChange={(e) => setUser({ ...user, email: e.target.value })}
+                            value={userLogin.email}
+                            onChange={(e) => setUserLogin({ ...userLogin, email: e.target.value })}
                             type="email"
                             id="email"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"
@@ -64,8 +64,8 @@ const Login = () => {
                             Password
                         </label>
                         <input
-                            value={user.password}
-                            onChange={(e) => setUser({ ...user, password: e.target.value })}
+                            value={userLogin.password}
+                            onChange={(e) => setUserLogin({ ...userLogin, password: e.target.value })}
                             type="password"
                             id="password"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"

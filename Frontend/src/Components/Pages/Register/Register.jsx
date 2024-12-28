@@ -5,7 +5,7 @@ import { FaSpinner } from "react-icons/fa";
 
 const Register = () => {
 
-    const [user, setUser] = useState({
+    const [userRegister, setUserRegister] = useState({
         name: '',
         email: '',
         password: ''
@@ -21,8 +21,8 @@ const Register = () => {
         setLoading(true);
 
         try {
-            const response = await axiosInstance.post("users/createUsers", user);
-            console.log(response.data);
+            const response = await axiosInstance.post("users/createUsers", userRegister);
+            
             if (response.data.success) {
                 alert(response.data.message);
                 navigate('/')
@@ -49,8 +49,8 @@ const Register = () => {
                             Name
                         </label>
                         <input
-                            value={user.name}
-                            onChange={(e) => setUser({ ...user, name: e.target.value })}
+                            value={userRegister.name}
+                            onChange={(e) => setUserRegister({ ...userRegister, name: e.target.value })}
                             type="text"
                             id="name"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"
@@ -65,8 +65,8 @@ const Register = () => {
                             Email
                         </label>
                         <input
-                            value={user.email}
-                            onChange={(e) => setUser({ ...user, email: e.target.value })}
+                            value={userRegister.email}
+                            onChange={(e) => setUserRegister({ ...userRegister, email: e.target.value })}
                             type="email"
                             id="email"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"
@@ -81,8 +81,8 @@ const Register = () => {
                             Password
                         </label>
                         <input
-                            value={user.password}
-                            onChange={(e) => setUser({ ...user, password: e.target.value })}
+                            value={userRegister.password}
+                            onChange={(e) => setUserRegister({ ...userRegister, password: e.target.value })}
                             type="password"
                             id="password"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"

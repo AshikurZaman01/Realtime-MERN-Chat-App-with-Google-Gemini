@@ -1,8 +1,11 @@
+import { UserProvider } from "./ContextApi/user.context"
 import AppRoutes from "./Routes/AppRoutes"
 
 const App = () => {
   return (
-    <AppRoutes></AppRoutes>
+    <UserProvider>
+      <AppRoutes></AppRoutes>
+    </UserProvider>
   )
 }
 
