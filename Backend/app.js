@@ -7,7 +7,6 @@ const morgan = require('morgan');
 const connectDB = require('./ConnDB/DB');
 const { notFound, defaultErrorHandler } = require('./MiddleWare/ErrorHandlers');
 const cookieParser = require('cookie-parser');
-const radisClient = require('./ConnDB/Radis.DB');
 connectDB();
 
 app.use(express.json());

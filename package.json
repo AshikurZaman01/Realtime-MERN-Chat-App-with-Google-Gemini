@@ -1,6 +1,21 @@
 {
   "dependencies": {
+    "concurrently": "^9.1.1",
     "express-validator": "^7.2.0",
     "morgan": "^1.10.0"
-  }
+  },
+  "name": "realtime-mern-chat-app-with-google-gemini",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd Frontnd && npm run dev",
+    "backEnd": "cd Backend && npm start", 
+    "dev": "concurrently \"npm run frontend\" \"npm run backEnd\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
