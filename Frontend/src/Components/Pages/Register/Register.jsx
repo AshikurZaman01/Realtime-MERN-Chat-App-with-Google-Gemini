@@ -1,11 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
+
+    const [user, setUser] = useState({
+        name: '',
+        email: '',
+        password: ''
+    })
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(user);
+    }
+
     return (
         <div className="flex h-screen items-center justify-center bg-gray-900">
             <div className="w-full max-w-sm p-6 bg-gray-800 rounded-lg shadow-md">
                 <h2 className="mb-6 text-2xl font-bold text-center text-gray-100">Register</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label
                             htmlFor="name"
@@ -14,6 +27,8 @@ const Register = () => {
                             Name
                         </label>
                         <input
+                            value={user.name}
+                            onChange={(e) => setUser({ ...user, name: e.target.value })}
                             type="text"
                             id="name"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"
@@ -28,6 +43,8 @@ const Register = () => {
                             Email
                         </label>
                         <input
+                            value={user.email}
+                            onChange={(e) => setUser({ ...user, email: e.target.value })}
                             type="email"
                             id="email"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"
@@ -42,6 +59,8 @@ const Register = () => {
                             Password
                         </label>
                         <input
+                            value={user.password}
+                            onChange={(e) => setUser({ ...user, password: e.target.value })}
                             type="password"
                             id="password"
                             className="w-full px-4 py-2 text-sm text-gray-900 border rounded-lg focus:outline-none focus:ring focus:ring-blue-500 border-gray-600 bg-gray-700 placeholder-gray-500"
