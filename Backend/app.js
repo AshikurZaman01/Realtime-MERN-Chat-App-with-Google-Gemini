@@ -26,9 +26,12 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+// Routes
 app.use('/api/users', require('./Routes/UserRoutes/userRoute'));
+app.use('/api/projects', require('./Routes/ProjectRoute/projectRoute'));
 
 
+// Error Handlers
 app.use(notFound);
 app.use(defaultErrorHandler);
 

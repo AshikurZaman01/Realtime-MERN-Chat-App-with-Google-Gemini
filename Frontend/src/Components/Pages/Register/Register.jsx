@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../../Config/Axios";
 import { FaSpinner } from "react-icons/fa";
+import { UserContext } from "../../../ContextApi/user.context";
 
 const Register = () => {
 
@@ -13,7 +14,7 @@ const Register = () => {
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
-
+    const { setUser } = useContext(UserContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,8 +23,10 @@ const Register = () => {
 
         try {
             const response = await axiosInstance.post("users/createUsers", userRegister);
-            
+
             if (response.data.success) {
+                localStorage.setItem("token", response.data.token);
+                setUser(response.data.user);
                 alert(response.data.message);
                 navigate('/')
             }

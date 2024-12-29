@@ -33,14 +33,14 @@ const loginUser = async (req, res) => {
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10),  // 10 days
         });
 
+        const userObject = user.toObject();
+        delete userObject.password;
+
         res.status(200).json({
             success: true,
             message: "Login Successful",
             token: tokenJWT,
-            user: {
-                name: user.name,
-                email: user.email,
-            },
+            user: userObject
         });
 
     } catch (error) {

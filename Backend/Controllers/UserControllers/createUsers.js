@@ -2,7 +2,7 @@ const { validationResult } = require("express-validator");
 const UserModel = require("../../Models/userModels/user.Model");
 
 const createUsers = async (req, res) => {
-   
+
     // Validate incoming request
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -41,18 +41,18 @@ const createUsers = async (req, res) => {
         // Set the JWT in a cookie
         res.cookie('token', tokenJWT, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production", 
+            secure: process.env.NODE_ENV === "production",
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10), // Expires in 10 days
         });
+
+        const userObject = newUser.toObject();
+        delete userObject.password;
 
         // Respond with success
         res.status(201).json({
             success: true,
             message: 'User created successfully',
-            user: {
-                name: newUser.name,
-                email: newUser.email,
-            },
+            user: userObject,
             token: tokenJWT,
         });
 
