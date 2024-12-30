@@ -13,7 +13,7 @@
    
     "frontend": "cd Frontend && npm run dev",
 
-    "backEnd": "cd Backend && npm start", 
+    "backEnd": "cd Backend && npx nodemon", 
 
     "dev": "concurrently \"npm run frontend\" \"npm run backEnd\""
   },
