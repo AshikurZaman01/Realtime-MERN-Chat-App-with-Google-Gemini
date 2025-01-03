@@ -28,8 +28,6 @@ const Home = () => {
         try {
             const response = await axiosInstance.post('projects/projectCreate', { name: projectName });
 
-            console.log('Project created:', response.data);
-
             if (response.data.message) {
                 alert(response.data.message);
                 setProjectName('');
@@ -41,25 +39,31 @@ const Home = () => {
             console.log(error)
             setErrorMessage(error.response?.data?.message || "An unexpected error occurred. Project Create Failed.");
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
 
     }
 
 
     return (
-        <main className="flex flex-col items-center justify-center h-screen bg-gray-900 text-gray-100">
+        <main className="flex   h-screen bg-gray-900 text-gray-100">
 
-            <HomeText setIsModalOpen={setIsModalOpen}></HomeText>
+<div>
+    dd
+</div>
 
-            <ModalForm
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-                handleCreateProject={handleCreateProject}
-                projectName={projectName}
-                setProjectName={setProjectName}
-                errorMessage={errorMessage} 
-                loading={loading}/>
+            <div>
+                <HomeText setIsModalOpen={setIsModalOpen}></HomeText>
+
+                <ModalForm
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                    handleCreateProject={handleCreateProject}
+                    projectName={projectName}
+                    setProjectName={setProjectName}
+                    errorMessage={errorMessage}
+                    loading={loading} />
+            </div>
 
         </main>
     );

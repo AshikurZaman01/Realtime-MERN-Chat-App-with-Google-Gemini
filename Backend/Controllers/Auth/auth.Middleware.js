@@ -3,7 +3,7 @@ const radisClient = require('../../ConnDB/Radis.DB');
 
 const verifiedAuthUser = async (req, res, next) => {
     try {
-        // Get token from cookies or authorization header
+
         const token = req.cookies?.token || (req.headers.authorization?.split(' ')[1]);
 
         if (!token) {

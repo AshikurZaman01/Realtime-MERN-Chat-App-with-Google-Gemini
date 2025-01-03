@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Password is required'],
         select: false,
     },
-});
+}, { timestamps: true });
 
 // Static method to hash password
 userSchema.statics.hashPassword = async function (password) {
