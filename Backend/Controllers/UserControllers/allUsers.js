@@ -9,14 +9,10 @@ const allUsers = async (req, res) => {
         })
 
         const allUsers = await UserModel.find({ _id: { $ne: loggedInuser._id } })
-
-
-        res.status(200).json({ success: true, message: "All Userss", data: allUsers })
+        return res.status(200).json({ success: true, message: "All Users Fetched Successfully.", data: allUsers })
 
     } catch (error) {
-
-        res.status(500).json({ success: false, message: "All Users Fetching Failed.", error: error.message })
-
+        return res.status(500).json({ success: false, message: "All Users Fetching Failed.", error: error.message })
     }
 
 }
