@@ -19,6 +19,7 @@ const ShowAllProjects = ({ loading, project }) => {
 
     return (
         <div className="text-white flex flex-col items-center justify-start px-2 gap-y-2 pb-5">
+
             {project.data.map((item, index) => (
                 <div
                     key={item._id || index}
@@ -39,6 +40,7 @@ const ShowAllProjects = ({ loading, project }) => {
                     </h2>
                 </div>
             ))}
+
         </div>
     );
 };
