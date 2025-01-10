@@ -74,7 +74,10 @@ const Home = () => {
                     project.length > 0 ?
                         <HomeText setIsModalOpen={setIsModalOpen}></HomeText>
                         :
-                        <AllProjects></AllProjects>
+                        <AllProjects
+                            loading={loading}
+                            project={project}
+                        ></AllProjects>
                 }
 
 
