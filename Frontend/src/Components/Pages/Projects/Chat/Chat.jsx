@@ -2,9 +2,9 @@ import { useLocation } from "react-router-dom";
 import ChatBody from "./ChatBody/ChatBody";
 
 const Chat = () => {
+
     const location = useLocation();
     const state = location.state || {};
-    console.log(state);
 
     return (
         <main className="h-screen w-screen flex justify-center items-center bg-slate-900 relative">

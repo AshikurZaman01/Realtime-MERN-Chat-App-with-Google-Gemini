@@ -7,6 +7,7 @@ import UserList from "./ChatHeader/UserList/UserList";
 const ChatBody = ({ data }) => {
 
     const [isOpenUserSidebar, setIsOpenUserSidebar] = useState(false);
+    const users = data?.item?.users;
 
     return (
         <section className="h-full min-w-96 bg-blue-950  overflow-y-scroll scrollbar-hide">
@@ -19,6 +20,7 @@ const ChatBody = ({ data }) => {
             <UserList
                 isOpenUserSidebar={isOpenUserSidebar}
                 setIsOpenUserSidebar={setIsOpenUserSidebar}
+                users={users}
             />
 
         </section>

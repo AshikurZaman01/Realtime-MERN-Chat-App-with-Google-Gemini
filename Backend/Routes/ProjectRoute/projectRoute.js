@@ -16,6 +16,4 @@ router.put('/addUserToProject', verifiedAuthUser, addUserToProject);
 router.get('/getProject/:projectId', verifiedAuthUser, getProjectById);
 
 
-
-
 module.exports = router;
