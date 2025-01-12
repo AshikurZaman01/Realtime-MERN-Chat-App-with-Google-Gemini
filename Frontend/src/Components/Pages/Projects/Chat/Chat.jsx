@@ -7,7 +7,7 @@ const Chat = () => {
     console.log(state);
 
     return (
-        <main className="h-screen w-screen flex justify-center items-center bg-slate-900">
+        <main className="h-screen w-screen flex justify-center items-center bg-slate-900 relative">
             <ChatBody data={state} />
         </main>
     )

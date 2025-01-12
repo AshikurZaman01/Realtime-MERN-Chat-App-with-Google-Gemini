@@ -1,7 +1,18 @@
+import { useEffect, useRef } from "react";
 
 const ConversationArea = () => {
+
+    const conversationEndMsgRef = useRef(null);
+
+    useEffect(() => {
+        if (conversationEndMsgRef.current) {
+            conversationEndMsgRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [])
+
+
     return (
-        <div className="text-white mt-20 mb-16">
+        <div className="text-white mt-20 mb-14">
 
 
             <div className="chat chat-start incoming01">
@@ -77,10 +88,7 @@ const ConversationArea = () => {
             </div>
 
 
-
-
-
-
+            <div ref={conversationEndMsgRef}></div>
         </div>
     )
 }
