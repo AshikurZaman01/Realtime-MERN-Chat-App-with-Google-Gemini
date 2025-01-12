@@ -4,7 +4,7 @@ const UserList = ({ isOpenUserSidebar, setIsOpenUserSidebar }) => {
     return (
         <div
             className={`
-                fixed bottom-0 h-72 w-full max-w-96 bg-gray-400 rounded-sm
+                fixed bottom-0 h-72 w-full max-w-96 h-full bg-gray-400 rounded-sm
                 transition-transform duration-300 ease-in-out z-20
                 ${isOpenUserSidebar ? 'right-[-500]' : 'translate-x-full right-0'}
             `}
